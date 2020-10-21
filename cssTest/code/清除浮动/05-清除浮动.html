@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>清除浮动</title>
+    <!--
+        清除浮动:
+            让浮动的子元素撑开父元素的高度
+
+           5. 伪元素
+    -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #wrap {
+            border: 1px solid;
+        }
+
+        #inner {
+            float: left;
+            width: 200px;
+            height: 200px;
+            background: pink;
+        }
+
+        /*通过设置父元素的两个属性来清除浮动*/
+        .clearfix{
+            *zoom:1;
+        }
+        .clearfix:after{
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+    </style>
+</head>
+<body>
+<div id="wrap" class="clearfix">
+    <div id="inner"></div>
+</div>
+</body>
+</html>

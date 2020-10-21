@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>双飞翼布局</title>
+    <style>
+        /*
+            两组实现的对比:
+            1. 两种布局方式都是把主列放在文档流最前面, 是主列优先加载.
+            2. 两种布局方式在实现上也有相同之处, 都是让三列浮动, 然后通过负外边距形成三列布局
+            3. 两种布局方式的不同之处在于如何处理中间主列的位置:
+                圣杯布局是利用父容器的左右内边距+两个从列的相对定位;
+                双飞翼布局是把主列嵌套在一个新的父级块中利用主列的左右内边距进行布局调整
+
+
+        */
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body{
+            /*两倍的left加right*/
+            min-width: 600px;
+        }
+
+        #content {
+            overflow: hidden;
+        }
+
+        /*三列的伪等高布局*/
+        #content .middle, #content .left, #content .right {
+            float: left;
+            height: 50px;
+            /*浮动元素的包含块靠浮动元素撑开*/
+            /*文字是出现再content中的, 也就是padding里面的内容*/
+            /*设置文字居中, 设置行高和div的高度一样即可实现文字的居中, 但并不是居中对齐, 居中对齐要用text-align:center*/
+            line-height: 50px;
+            padding-bottom: 10000px;
+            margin-bottom: -10000px;
+        }
+
+        /*头部和脚部的布局*/
+        #header, #footer {
+            background: gray;
+            border: 1px solid;
+            text-align: center;
+        }
+
+        /*双飞翼布局*/
+        #content .middle {
+            width: 100%;
+            background: deeppink;
+        }
+
+        #content .left, #content .right {
+            width: 200px;
+            text-align: center;
+            background: pink;
+        }
+
+        /*margin是相对于紧贴着的元素而言的*/
+        #content .left {
+            margin-left: -100%;
+        }
+
+        #content .right {
+            margin-left: -200px;
+        }
+
+        #content .m_inner{
+            padding: 0 200px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div id="header"><h4>header</h4></div>
+<div id="content">
+    <div class="middle">
+        <div class="m_inner">
+            middle
+        </div>
+    </div>
+    <div class="left">left</div>
+    <div class="right">right</div>
+
+</div>
+<div id="footer"><h4>footer</h4></div>
+
+</body>
+</html>

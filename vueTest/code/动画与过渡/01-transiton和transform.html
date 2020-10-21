@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+    <script src="../../lib/vue.js"></script>
+    <style>
+        /*显示/隐藏的过渡效果, vue来执行, 类名是有规定的, xxx是自己写的*/
+        .xxx-enter-active, .xxx-leave-active {
+            transition: opacity 1s;
+        }
+
+        /*隐藏时的样式*/
+        .xxx-enter, .xxx-leave-to {
+            opacity: 0;
+        }
+
+
+
+        /*显示的过滤效果*/
+        .move-enter-active{
+            transition: all 1s;
+        }
+        /*隐藏的过滤效果*/
+        .move-leave-active{
+            transition: all 3s;
+        }
+        /*隐藏时的样式*/
+        .move-enter, .move-leave-to{
+            opacity: 0;
+            transform: translateX(20px);
+
+        }
+
+
+    </style>
+</head>
+<body>
+<div id="test1">
+    <button @click="isShow=!isShow">toggle</button>
+    <!--transition标签是vue的标签, 要实现动画的标签必须包含在此标签内-->
+    <transition name="xxx">
+        <p v-show="isShow">hello</p>
+    </transition>
+</div>
+
+<div id="test2">
+    <button @click="isShow=!isShow">toggle</button>
+    <!--transition标签是vue的标签, 要实现动画的标签必须包含在此标签内-->
+    <transition name="move">
+        <p v-show="isShow">hello</p>
+    </transition>
+</div>
+<script>
+    new Vue({
+        el: '#test1',
+        data() {
+            return {
+                isShow: true,
+            }
+        }
+    })
+
+    new Vue({
+        el: '#test2',
+        data() {
+            return {
+                isShow: true,
+            }
+        }
+    })
+</script>
+</body>
+</html>

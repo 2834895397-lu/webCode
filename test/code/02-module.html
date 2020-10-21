@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Angular 模块</title>
+    <script src="../js/angular.js"></script>
+</head>
+<body>
+<!--  ng-init: 当ng初始化的时候, 初始化对应的值, 存储到ng的数据模型中-->
+<div ng-app="myApp" ng-controller="DemoController">
+    <h1>使用NG实现双向数据绑定</h1>
+    <p><input type="text" placeholder="请输入你的姓名" ng-model="user.name"></p>
+    <p>hello <strong>{{user.name}}</strong></p>
+    <input type="button" ng-click="show()" value="click me">
+</div>
+<script>
+    /*  注册模块, 通过module函数,  第一个参数是这个模块的名字
+      第二个参数是这个模块所依赖的模块, 如果不依赖任何模块也必须传递第二个模块, angular.model就不是创建一个模块*/
+
+    // 创建一个名字为myApp的模块, 返回刚刚创建的模块对象
+    var app = angular.module('myApp', []);
+    //   为这个模块创建一个控制器
+    //$scope为数据模型, 用来存放数据的
+    app.controller("DemoController", function ($scope) {
+        //    当控制器执行时会自动执行的函数
+        $scope.user = {};
+        $scope.user.name = "jacklu";
+        $scope.show = function () {
+            alert("hello $scope");
+
+        }
+
+
+    })
+
+
+</script>
+</body>
+</html>

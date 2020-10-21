@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2D变形</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html{
+            height: 100%;
+        }
+        body{
+            position: relative;
+            width: 60%;
+            height: 60%;
+            border: 1px solid;
+            overflow: hidden;
+            margin: 100px auto 0;
+        }
+        #test{
+            width: 200px;
+            height: 200px;
+            /*border-radius: 50%;*/
+            background: pink;
+            text-align: center;
+            text-shadow: 3px 3px 2px blue;
+            font: 30px/200px "微软雅黑";
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            top: 0;
+            /*使居中*/
+            margin: auto;
+            /*两秒过渡, 一般放在这里, 有动作回放效果 */
+            transition: 2s;
+
+            /*定义运动的基点, 改变基点的话从左上角开始算, 默认的运动基点是中心*/
+            /*从左上角开始, 往左多少, 往下多少*/
+            transform-origin: 30% 50%;
+
+
+        }
+        /*设置过度动画*/
+        /*#test:hover{*/
+        /*    transform: rotate(720deg);*/
+        /*    transition: 2s;*/
+        /*}*/
+
+        /*或者是当鼠标移入body时找到#test, 再设置动画的过度*/
+        body:hover #test{
+            /*旋转*/
+            transform: rotate(720deg);
+
+            /*移动(运输)*/
+            /*transform: translateX(300px);*/
+
+            /*斜切*/
+            /*transform: skew(60deg);*/
+
+
+            /*缩放, 比例, scale也分为x和y*/
+            /*transform: scale(2);*/
+        }
+    </style>
+</head>
+<body>
+<div id="test">
+jacklu
+</div>
+</body>
+</html>

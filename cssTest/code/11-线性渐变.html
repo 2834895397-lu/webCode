@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>线性渐变</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #test{
+            width: 400px;
+            height: 300px;
+            border: 1px solid;
+            margin: 0 auto;
+            /*设置渐变, 渐变是背景图片的渐变*/
+            /*第一个参数使用to top      to right来改变渐变的方向
+                也可以使用角度来改变渐变的方向 45deg
+                颜色后面可以用空格带参数  表示从多少像素开始渐变, 前面保持纯色
+            */
+            background-image: linear-gradient(to right, red 30px, blue, pink 200px, yellow, gray);
+            /*透明度的渐变*/
+            /*background-image: linear-gradient(90deg, rgba(0,0,0,0) 100px, rgba(0,0,0,1) 200px);*/
+
+            /*重复渐变*/
+            /*background-image:repeating-linear-gradient(90deg, rgba(0,0,0,0) 100px, rgba(0,0,0,1) 200px);*/
+        }
+    </style>
+</head>
+<body>
+<div id="test">
+
+</div>
+</body>
+</html>

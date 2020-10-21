@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3D平移</title>
+    <style>
+        /*
+            景深: 让3D场景有近大远小的效果(我们肉眼距离屏幕的距离)
+                是一个不可继承属性, 但他可以作用域后代元素(不是作用于本身)
+            原理: 景深越大, 灭点越远, 元素变形更小
+                  景深越小, 灭点越近, 元素变形更大
+             景深基点:(perspective-origin) 视角的位置
+
+        */
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body, html{
+            overflow: hidden;
+        }
+
+        #wrap {
+            position: absolute;;
+            left: 50%;
+            top: 50%;
+            margin-left: -200px;
+            margin-top: -200px;
+            width: 400px;
+            height: 400px;
+            border: 1px solid;
+            /*这样写法景深是作用在元素的后代, 也就是作用于#wrap的后代*/
+            perspective: 300px;
+            /*设置景深基点*/
+            perspective-origin:left top;
+
+        }
+
+        #inner {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -100px;
+            margin-top: -100px;
+            width: 200px;
+            height: 200px;
+            border: 1px solid;
+            background: pink;
+            /*水平平移到中间*/
+            text-align: center;
+            /*50px的字体大小, 行高为200px, 微软雅黑, 这样就是一行, 刚好往中间对齐了*/
+            font: 50px/200px "微软雅黑";
+
+            transition: 1s;
+        }
+
+        #wrap:hover #inner {
+            transform: rotateX(45deg);
+            /*这样写景深作用于元素本身, 也就是作用于 #inner*/
+            /*这样写景深函数要放在第一位, 景深就不会起作用, 不推荐使用, 还是推荐使用perspective:...px*/
+            /*transform:perspective(100px) rotateX(360deg);*/
+        }
+    </style>
+</head>
+<body>
+
+<div id="wrap">
+    <div id="inner">jacklu</div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>指令</title>
+    <script src="../lib/vue.js"></script>
+    <style>
+        /*属性名标签, 找到v-cloak属性所在的标签*/
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<!--
+    ref: 为某个元素注册一个唯一标识, vue对象通过$ref属性访问这个元素对象
+    v-cloak: 使用他防止闪现表达式, 与css配合: [v-cloak]{display: none}, 当vue实例解析完成之后v-cloak就会被销毁, css就不起作用了
+
+-->
+
+<div id="example">
+    <p ref="content">atguigu</p>
+    <button @click="hint">提示</button>
+    <p v-text="msg"></p>
+    <!--在vue解析之后v-cloak就不存在了-->
+    <p v-cloak>{{msg}}</p>
+</div>
+
+<script>
+    alert('---------');
+    new Vue({
+        el: '#example',
+        data: {
+            msg: '尚硅谷',
+        },
+        methods: {
+            hint() {
+                console.log(this.$refs.content.textContent);
+            }
+        }
+    })
+</script>
+</body>
+</html>

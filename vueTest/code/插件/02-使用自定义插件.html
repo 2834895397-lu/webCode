@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>使用自定义插件</title>
+    <!--注意引进顺序, 先使用插件里面使用到vue, 所以要先引入vue.js-->
+    <script src="../../lib/vue.js"></script>
+    <script src="01-vue-myPlugin.js"></script>
+
+    <div id="test">
+        <p v-my-directive="msg"></p>
+    </div>
+
+
+
+
+
+    <script>
+        // 引入插件之后还要声明使用插件
+        Vue.use(MyPlugin)//内部会执行MyPlugin.install(Vue)
+
+      var vm = new Vue({
+            el: '#test',
+            data:{
+                msg: 'I Like You!',
+            }
+        })
+
+        //使用自定义插件的全局方法
+        Vue.myGlobalMethod();
+
+        //使用自定义插件的原型方法
+        vm.$myMethod();
+
+
+
+    </script>
+
+
+</head>
+<body>
+
+</body>
+</html>

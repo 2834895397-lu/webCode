@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>左右查询</title>
+</head>
+<body>
+
+
+</body>
+<script>
+    <!--左查询: 对等号左侧的变量进行查询-->
+    test();
+    function test() {
+        var a = 8;
+        /*对于这种情况, 没有声明的变量, 会自动的提升到全局变量中*/
+        b = a;
+        console.log(b);
+    }
+
+    //右查询, 等号的非左侧
+    console.log(b);
+</script>
+</html>

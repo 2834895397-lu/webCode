@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>立方体</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #wrap {
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            width: 300px;
+            height: 300px;
+            border: 1px solid;
+
+            /*等一下是.box在转, 所以老爸必须有景深*/
+            perspective: 200px;
+            /*搭建3D场景的舞台, 作用于子元素, 不可继承*/
+            /*transform-style: preserve-3d;*/
+
+        }
+
+        #wrap > .box {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            width: 100px;
+            height: 100px;
+            /*让它3s钟完成动画*/
+            transition: 3s;
+            /*搭建3D场景的舞台, 作用于子元素, 不可继承*/
+            transform-style: preserve-3d;
+            /*在box初始化的时候设置box的运动基点*/
+            transform-origin: center center -28.867513459481287px;
+        }
+
+        #wrap > .box > div {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            /*最后一个参数为设置透明度*/
+            background: rgba(231, 1, 32, 0.2);
+            font: 50px/100px "微软雅黑";
+            text-align: center;
+            /*设置所有后面的元素都看不到*/
+            backface-visibility: hidden;
+
+            /*把每个面的基点设置在中心点*/
+            transform-origin: center center -28.867513459481287px;
+        }
+
+
+        /*把所有div设置成一只盒子*/
+        #wrap > .box > div:nth-child(3) {
+            transform: rotateY(240deg);
+        }
+
+        #wrap > .box > div:nth-child(2) {
+            transform: rotateY(120deg)
+        }
+
+
+        #wrap:hover .box {
+            transform: rotateY(360deg);
+        }
+
+    </style>
+</head>
+<body>
+<div id="wrap">
+    <div class="box">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+    </div>
+</div>
+</body>
+</html>

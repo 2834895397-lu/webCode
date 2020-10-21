@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>边框图片</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #test {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            width: 200px;
+            height: 200px;
+            /*
+                solid:实线
+                dashed:虚线
+                double:双实线
+                dotted: 圆点
+            */
+            border: 50px solid;
+
+            border-image-source: url("img/a.jpg");
+            /*设置如何切割图片, 上右下左*/
+            border-image-slice: 33.33%;
+            border-image-repeat: round;
+            /*设置往外扩展*/
+            border-image-outset: 30px;
+            /*如果没有设置border-image-width的话, 那就是border的宽度*/
+            border-image-width: 50px;
+            /*background-image: 支持多背景, 先指定的图片会在后指定的图片的前面*/
+
+        }
+
+
+    </style>
+</head>
+<body>
+<div id="test">
+
+</div>
+</body>
+</html>

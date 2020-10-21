@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>清除浮动</title>
+    <!--
+        清除浮动:
+            让浮动的子元素撑开父元素的高度
+
+            2. 通过开启bfc
+                浮动盒子的特点, 定位盒子的特点: 高度都由内容撑开
+    -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #wrap {
+            border: 1px solid;
+            /*可以使用这种方式来撑开父元素*/
+            overflow: hidden;
+            /*也可以使用这种方式来撑开父元素的高度*/
+            /*float: left;*/
+        }
+
+        #inner {
+            float: left;
+            width: 200px;
+            height: 200px;
+            background: pink;
+        }
+    </style>
+</head>
+<body>
+<div id="wrap">
+    <div id="inner"></div>
+</div>
+</body>
+</html>

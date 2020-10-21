@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #wrap {
+            height: 400px;
+            width: 400px;
+            border: 1px solid;
+            margin: 0 auto;
+            /*让内容往中间对齐*/
+            text-align: center;
+        }
+        /*创建一个让图片对齐的元素*/
+        #wrap:after{
+            content: "";
+            display: inline-block;
+            height: 100%;
+            width: 0;
+            /*border: 1px solid deeppink;*/
+            /*让图片参照来垂直居中对齐*/
+            vertical-align: middle;
+        }
+        #wrap img{
+            /*垂直对齐要参照, 并且是参照同一个包含块内最大的元素*/
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+<div id="wrap">
+    <img src="img/a.jpg" height="150px" width="300px"/></div>
+</body>
+</html>

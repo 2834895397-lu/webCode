@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自动收集表单数据</title>
+    <script src="../lib/vue.js"></script>
+</head>
+<body>
+<div id="demo">
+    <form action="/xxx" @submit.prevent="handleSubmit">
+        <span>用户名</span>
+        <input type="text" v-model="username"><br>
+
+        <span>密码</span>
+        <input type="password" v-model="pwd"><br>
+
+        <span>性别</span>
+        <!--v-model和value进行绑定-->
+        <input type="radio" id="female" value="女" v-model="sex" >
+        <label for="female">女</label>
+        <input type="radio" id="male" value="男" v-model="sex">
+        <label for="male">男</label><br>
+
+        <span>爱好</span>
+        <!--v-model与多选框进行绑定  value(无论是多选框还是单选框都是跟value进行绑定的)-->
+        <input type="checkbox" id="basket" value="basket" v-model="likes">
+        <label for="basket">篮球</label>
+        <input type="checkbox" id="foot" value="foot" v-model="likes">
+        <label for="basket">足球</label>
+        <input type="checkbox" id="pingpang" value="pingpang" v-model="likes">
+        <label for="basket">乒乓</label><br>
+
+        <span>城市</span>
+        <select v-model="cityId">
+            <option value="">未选择</option>
+            <option :value="city.id" v-for="(city, index) in allCities">{{city.name}}</option>
+        </select><br>
+
+
+        <span>介绍</span>
+        <textarea rows="10" v-model="desc"></textarea><br><br>
+
+        <input type="submit" value="注册">
+    </form>
+</div>
+<script>
+    new Vue({
+        el: '#demo',
+        data:{
+            username: '',
+            pwd: '',
+            sex: '女',
+            likes:[],
+            allCities: [{id: 1, name: 'BJ'}, {id: 2, name: 'SH'}, {id: 3, name: 'GD'}],
+            cityId:2,
+            desc: '',
+        },
+        methods:{
+            handleSubmit(){
+                console.log(this.username, this.pwd, this.sex, this.likes, this.cityId, this.desc);
+            }
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>伪等高布局</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        #wrap{
+            width: 700px;
+            border: 1px solid;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        /*
+            浮动之后的元素不会撑开包含块, 包含块的宽高会失效. 所以要清除浮动
+
+        */
+        #wrap .left{
+            padding-bottom: 1000px;
+            margin-bottom: -1000px;
+            float: left;
+            width: 200px;
+            background: pink;
+        }
+        #wrap .right{
+            padding-bottom: 1000px;
+            margin-bottom: -1000px;
+            float: left;
+            width: 500px;
+            background: deeppink;
+        }
+
+        /*
+        下面两个样式都是清除浮动的样式, 清除浮动要在包含块清除
+        */
+
+        .clearfix{
+            *zoom:1;
+        }
+        .clearfix:after{
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+    </style>
+</head>
+<body>
+
+<div id="wrap" class="clearfix">
+    <div class="left">
+        left<br>
+        left<br>
+        left<br>
+        left<br>
+        left<br>
+        left<br>
+        left<br>
+        left<br>
+    </div>
+    <div class="right">
+        right<br>
+        right<br>
+        right<br>
+        right<br>
+        right<br>
+        right<br>
+        right<br>
+        right<br>
+        right<br>
+        right<br>
+        right<br>
+        right<br>
+        right<br>
+        right<br>
+        right<br>
+        right<br>
+        right<br>
+        right<br>
+        right<br>
+        right<br>
+        right<br>
+        right<br>
+        right<br>
+        right<br>
+        right<br>
+        right<br>
+        right<br>
+        right<br>
+        right<br>
+        right<br>
+        right<br>
+        right<br>
+        right<br>
+        right<br>
+        right<br>
+        right<br>
+        right<br>
+        right<br>
+        right<br>
+        right<br>
+        right<br>
+        right<br>
+        right<br>
+        right<br>
+        right<br>
+        right<br>
+        right<br>
+        right<br>
+        right<br>
+        right<br>
+
+        right<br>
+        right<br>
+        right<br>
+        right<br>
+        right<br>
+        right<br>
+        right<br>
+        right<br>
+    </div>
+</div>
+
+</body>
+</html>

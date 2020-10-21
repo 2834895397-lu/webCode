@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="55ea1e5b-d91b-496a-a7f9-9d4522d8f230" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1hDQ3k6plm0Mv80EEbkxX86sbro" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="js.last.introduce.type" value="VAR" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\WebStormWorkspace\cssTest\code\动画" />
+      <recent name="F:\WebStormWorkspace\cssTest\code\3D变换" />
+      <recent name="F:\WebStormWorkspace\cssTest\code\img" />
+      <recent name="F:\WebStormWorkspace\cssTest\code\清除浮动" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\WebStormWorkspace\cssTest\code\清除浮动" />
+    </key>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="55ea1e5b-d91b-496a-a7f9-9d4522d8f230" name="Default Changelist" comment="" />
+      <created>1599542985205</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1599542985205</updated>
+      <workItem from="1599542987469" duration="91794000" />
+      <workItem from="1599983006899" duration="4822000" />
+      <workItem from="1600062675058" duration="1411000" />
+      <workItem from="1600064152036" duration="3338000" />
+      <workItem from="1600131957283" duration="9788000" />
+      <workItem from="1600325576032" duration="1325000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="260" y="0" key="#Inspections" timestamp="1599729598064">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="260" y="0" key="#Inspections/0.0.1536.824@0.0.1536.824" timestamp="1599729598064" />
+    <state x="157" y="0" key="SettingsEditor" timestamp="1599580754078">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="157" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1599580754078" />
+    <state x="341" y="185" key="run.anything.popup" timestamp="1599629734475">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="341" y="185" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1599629734475" />
+    <state x="347" y="0" width="840" height="822" key="search.everywhere.popup" timestamp="1600216566180">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="347" y="0" width="840" height="822" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1600216566180" />
+  </component>
+</project>

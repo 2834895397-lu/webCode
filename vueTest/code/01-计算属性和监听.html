@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>计算属性和监听</title>
+    <script src="../lib/vue.js"></script>
+</head>
+<body>
+<div id="demo">
+    姓: <input type="text" placeholder="First Name" v-model="firstName"><br>
+    名: <input type="text" placeholder="Last Name" v-model="lastName"><br>
+    姓名1(单项): <input type="text" placeholder="Full Name1" v-model="fullName1"><br>
+    姓名2(单项): <input type="text" placeholder="Full Name2" v-model="fullName2"><br>
+    姓名3(双向): <input type="text" placeholder="Full Name3" v-model="fullName3"><br>
+    {{fullName1}}
+    {{fullName1}}
+    {{fullName1}}
+</div>
+<script>
+    var vm = new Vue({
+        el: '#demo',
+        data: {
+            firstName: 'A',
+            lastName: 'B',
+            fullName1: 'A B',
+            fullName2: 'A B'
+        },
+        fullName3: {
+            /*回调函数, 每一个属性都有两个回调函数: get和set*/
+            //计算并返回当前属性的值
+            get() {
+                return this.firtName + ' ' + this.lastName;
+            },
+            //回调函数, 监视当前属性值得变化, 当属性值发生改变时发生回调, 更新相关的属性数据
+            set(value) {//这个value就是fullName3的最新属性值
+                let split = value.split(' ');
+                this.firstName = split[0];
+                this.lastName = split[1];
+            },
+        },
+        //计算属性存在缓存, 多次读取只执行一次getter计算
+        computed: {
+            // 回调函数, 当方法里面的内容变动的使用回调(刚初始化的时候也会变动)
+            fullName1() {//方法的返回值作为方法值, 实时监听fullName1的变动(根据使用到的计算属性来监听的)
+                console.log("jacklu");
+                return this.firstName + ' ' + this.lastName;
+            },
+            watch: {
+                firstName: function (newValue, oldValue) {//当firstName发生变化就会出发此函数进行回调
+                    this.fullName2 = newValue + ' ' + oldValue;
+                }
+            }
+        }
+    })
+
+    /*添加一个实例方法*/
+    vm.$watch('lastName', function (value) {
+        //    更新fullName2
+        this.fullName2 = this.firstName + ' ' + value;
+
+    })
+</script>
+</body>
+</html>

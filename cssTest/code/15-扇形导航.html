@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>扇形导航</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            height: 100%;
+            overflow: hidden;
+        }
+
+        #wrap {
+            right: 15px;
+            bottom: 15px;
+            position: fixed;
+            width: 50px;
+            height: 50px;
+            /*background: pink;*/
+            border-radius: 35%;
+        }
+
+        #wrap > .inner {
+            height: 100%;
+        }
+
+        #wrap > .inner > img {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            left: 0;
+            top: 0;
+        }
+
+        #wrap > .home {
+            position: absolute;
+            /*设置显示在最前面*/
+            z-index: 1;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            background: url("img/hime.png");
+            background-size: 50px 50px;
+            background-repeat: no-repeat;
+            transition: 1s;
+        }
+    </style>
+
+    <script>
+        window.onload = function () {
+            /*
+            * 小坑:
+            *   1. 在元素首次渲染还没有完成的情况下, 是不会出发过渡的
+            *   2. 在绝大部分变换样式切换中, 如果变换函数的位置个数不相同也不会出发过渡
+            *   例如:(不会出发过渡, 这是最最最重要的一点)
+            *
+            *    this.style.transform = "rotate(-720deg) scale(1)";
+            *    this.style.transform = " scale(1)   rotate(0deg)";
+            *
+            * */
+            var homeEle = document.querySelector(".home");
+            var imgs = document.getElementsByTagName("img");
+            var flag = true;
+            /*自定义斜边长度为140*/
+            var c = 180;
+
+            function fn() {
+                this.style.transition = "0.3s";
+                /*切记动画的转换类型一定要相同, 否则没有过渡效果*/
+                this.style.transform = "rotate(-720deg) scale(1)";
+                this.style.opacity = "1";
+
+                /*记得解绑事件*/
+                this.removeEventListener("transitionend", fn);
+
+            }
+            /*第二部分, 给图片设置点击放大再回去*/
+            for (var i = 0; i < imgs.length; i++) {
+                imgs[i].onclick = function () {
+                    /*记得设置回来自己的transition, 不然点击了home之后, transition就会按照home设定的时间来过渡*/
+                    this.style.transition = ".5s";
+                    /*设置放大两倍*/
+                    this.style.transform = "rotate(-720deg) scale(2)";
+                    /*设置透明度为0.1*/
+                    this.style.opacity = "0.1";
+
+                    /*通过监听transitionend事件来恢复图标的状态*/
+                    this.addEventListener("transitionend", fn)
+
+                }
+                
+            }
+
+
+
+
+            homeEle.onclick = function () {
+                if (flag) {
+                    this.style.transform = "rotate(-720deg)";
+                    for (var i = 0; i < imgs.length; i++) {
+                        /*设置动画过渡的时长, 1秒内完成, 延迟i*0.1秒后开始, 注意1s后后一个空格*/
+                        imgs[i].style.transition = "1s " + (i * 0.1) + "s";
+                        /*给图片设置旋转效果*/
+                        imgs[i].style.transform = "rotate(-720deg) scale(1)";
+                        /*传入边长和角度*/
+                        /*设置每个图片的最终动画之后的位置*/
+                        imgs[i].style.left = -getPoint(c, 90 * i / (imgs.length - 1)).left + "px";
+                        imgs[i].style.top = -getPoint(c, 90 * i / (imgs.length - 1)).top + "px";
+                    }
+                } else {
+                    this.style.transform = "rotate(0deg)";
+                    for (var i = 0; i < imgs.length; i++) {
+                        /*设置动画过渡的时长*/
+                        imgs[i].style.transition = "1s " + ((imgs.length - 1 - i) * 0.1) + "s";
+                        /*给图片设置旋转效果*/
+                        imgs[i].style.transform = "rotate(0deg) scale(1)";
+                        /*传入边长和角度*/
+                        /*设置每个图片的最终动画之后的位置*/
+                        imgs[i].style.left = 0 + "px";
+                        imgs[i].style.top = 0 + "px";
+                    }
+                }
+                flag = !flag;
+            }
+
+            /*根据角度和斜边求两个直角边*/
+
+            /*传入边长和角度得出坐标*/
+            function getPoint(c, deg) {
+                let x = Math.round(c * Math.sin(deg * Math.PI / 180));
+                let y = Math.round(c * Math.cos(deg * Math.PI / 180));
+
+                return {left: x, top: y};
+
+
+            }
+        }
+    </script>
+</head>
+<body>
+<div id="wrap">
+    <div class="inner">
+        <img src="img/2.png" alt="">
+        <img src="img/3.png" alt="">
+        <img src="img/4.png" alt="">
+        <img src="img/5.png" alt="">
+        <img src="img/6.png" alt="">
+    </div>
+    <div class="home">
+    </div>
+</div>
+</body>
+
+</html>

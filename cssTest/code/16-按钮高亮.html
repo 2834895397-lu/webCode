@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>按钮高亮</title>
+</head>
+<body>
+<a href="javascript:;">HOME</a>
+</body>
+</html>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    a {
+        display: inline-block;
+        text-decoration: none;
+        color: white;
+        width: 60px;
+        height: 30px;
+        background: gray;
+        text-align: center;
+        line-height: 30px;
+        border: 1px solid black;
+        box-sizing: border-box;
+        /*加粗字体*/
+        font-weight: bold;
+        margin: auto;
+
+        /*下面是垂直水平居中的设置*/
+        position: absolute;
+        /*left, top的百分比参照与包含块的宽和高*/
+        left: 50%;
+        top: 50%;
+        /*下面的百分比参照的是元素的本身的宽和高*/
+        transform: translate(-50%, -50%);
+
+        /*设置过渡时间*/
+        transition: 2000ms;
+
+    }
+    a:hover{
+        background: white;
+        color: gray;
+
+    }
+
+
+</style>

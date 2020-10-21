@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>生命周期</title>
+    <script src="../lib/vue.js"></script>
+</head>
+<body>
+<div id="test">
+    <button @click="destroyVM">destroy vm</button>
+    <p v-show="isShow">尚硅谷IT教育</p>
+</div>
+<script>
+    /*
+    * 常用的生命周期方法:
+            1. mounted(): vue示例挂在上去的时候,  长用来发送ajax请求, 启动定时器等任务
+    *       beforeDestroy(): 做收尾工作, 如: 清除定时器等
+    *
+    *
+    *
+    * */
+    new Vue({
+        el: '#test',
+        data: {
+            isShow: true,
+        },
+        //初始阶段
+        beforeCreate() {
+            console.log('beforeCreate()');
+        },
+        created() {
+            console.log('created()');
+        },
+        beforeMount() {
+            console.log('beforeMount()');
+        },
+        /*
+        * 初始化显示之后立即调用(1次)和当方法体内用到的属性变化时调用
+        * */
+        mounted() {//初始化显示之后立即调用, 只要是回调函数, 就直接写箭头函数这样就保证不会找不到变量的问题
+            //箭头函数的特点就是函数内部没有的话就直接用外部的, 在这里外部刚好是vm对象
+            this.intervalId = setInterval(() => {
+                console.log('mounted()');
+                //当干掉vm对象时定时器还会在工作, 会造成内存泄漏
+                console.log('----');
+                this.isShow = !this.isShow;
+            }, 1000);
+
+        },
+
+        //更新阶段
+        beforeUpdate(){
+            console.log('beforeupdate()');
+        },
+        updated(){
+            console.log('updated()');
+        },
+
+        //死亡阶段
+        beforeDestroy() {
+            console.log('beforeDestroy');
+            //清除定时器
+            clearInterval(this.intervalId);
+        },
+        destroyed(){
+            console.log('destroyed');
+        },
+
+
+        methods: {
+            destroyVM() {
+                //干掉vm
+                this.$destroy();
+            }
+        }
+    })
+</script>
+</body>
+</html>

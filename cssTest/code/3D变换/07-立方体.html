@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>立方体</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #wrap {
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            width: 300px;
+            height: 300px;
+            border: 1px solid;
+
+            /*等一下是.box在转, 所以老爸必须有景深*/
+            perspective: 200px;
+            /*搭建3D场景的舞台, 作用于子元素, 不可继承*/
+            /*transform-style: preserve-3d;*/
+            background-image: url(../img/a.jpg);
+            background-size: 179% auto;
+            background-position: center center;
+
+        }
+
+        #wrap > .box {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            width: 100px;
+            height: 100px;
+            /*让它3s钟完成动画*/
+            transition: 3s;
+            /*搭建3D场景的舞台, 作用于子元素, 不可继承*/
+            transform-style: preserve-3d;
+            /*在box初始化的时候设置box的运动基点*/
+            transform-origin: center center -50px;
+        }
+
+        #wrap > .box > div {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            /*最后一个参数为设置透明度*/
+            background: rgba(11, 231, 111, .2);
+            font: 50px/100px "微软雅黑";
+            text-align: center;
+            /*设置所有后面的元素都看不到*/
+            backface-visibility: hidden;
+        }
+
+        #wrap > .box > div:nth-child(5) {
+            top: -100px;
+            /*把运动基点设置为底边, 如果写像素, 默认从左上角开始*/
+            transform-origin: bottom;
+            /*围绕着运动基点, 绕x轴旋转90deg*/
+            transform: rotateX(90deg);
+
+        }
+
+        #wrap > .box > div:nth-child(6) {
+            bottom: -100px;
+            transform-origin: top;
+            transform: rotateX(-90deg);
+        }
+
+        #wrap > .box > div:nth-child(3) {
+            left: -100px;
+            transform-origin: right;
+            transform: rotateY(-90deg);
+        }
+
+        #wrap > .box > div:nth-child(4) {
+            right: -100px;
+            transform-origin: left;
+            transform: rotateY(90deg);
+        }
+
+        #wrap > .box > div:nth-child(2) {
+            /* rotateX(180deg): 让后面的元素在旋转到前面的时候字体不颠倒*/
+            transform: translateZ(-100px) rotateX(180deg);
+        }
+
+        /*当#wrap hover的时候让.box旋转*/
+        #wrap:hover .box {
+            /*不能在hover中改变基点, 不然会乱, 要改变运动基点应该在元素初始化的时候就改变基点*/
+            transform: rotate3d(1, 2, 3, 3600deg);
+        }
+
+
+    </style>
+</head>
+<body>
+<div id="wrap">
+    <div class="box">
+        <div>前</div>
+        <div>后</div>
+        <div>左</div>
+        <div>右</div>
+        <div>上</div>
+        <div>下</div>
+    </div>
+</div>
+</body>
+</html>

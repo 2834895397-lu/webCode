@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动画</title>
+    <style>
+        /*
+            animation主要是掌握关键帧, 关键帧就是动画的起始位置
+            animation-delay 是动画外的属性, 其他的是动画内的属性
+
+            关键帧: @keyframe name{
+                    percent{
+                        cssType
+                    }
+                    percent{
+                    cssType
+                    }
+                }
+        */
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #wrap {
+            position: relative;
+            margin: 200px auto;
+            width: 300px;
+            height: 300px;
+            border: 1px solid;
+        }
+
+        #test {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            /*50%是相对于本身自己的宽和高, 如果在后续中添加了transform属性, 则这个将会失效,
+            所以后续如果要添加动画的话, 最好不要用这个属性来居中对齐, 后续可以使用margin来进行居中对齐*/
+            /*transform: translate3d(-50%, -50%, 0);*/
+            margin-left: -50px;
+            margin-top: -50px;
+            width: 100px;
+            height: 100px;
+            background: pink;
+            border-radius: 50%;
+            /*居中对齐*/
+            line-height: 100px;
+            font: 30px/100px "微软雅黑";
+            text-align: center;
+            /*50%是相对于自己的宽度和高度*/
+            /*border-radius: 50%;*/
+            /*自定义动画名称为move*/
+            animation-name: move;
+            /*自定义动画时间为3s, 带单位有效*/
+            animation-duration: 3s;
+            /*设置动画的运动效果*/
+            animation-timing-function: linear;
+            /*设置延迟3s*/
+            animation-delay: 1s;
+            /*动画的重复次数(重复的是关键帧), 属于动画内的属性, 不会对动画外的属性起作用, 延迟次数只会出发一次*/
+            /*infinite: 无限的*/
+            animation-iteration-count: infinite;
+            /*设置动画的方向 normal为正常方向, reverse为反向*/
+            /*反转的是关键帧和animation-timing-function(timing为时序)*/
+            /*animation-direction: normal;*/
+            /*动画前后的状态和from  to 保持一致*/
+            animation-fill-mode: both;
+            /*默认让动画执行*/
+            animation-play-state: running;
+            /*让动画循环往复 alternate: 交替的*/
+            animation-direction: alternate;
+
+        }
+
+        /*使用关键字@keyframes为动画move设置动画*/
+        @keyframes move {
+            /*百分比表示的是时间*/
+            /*animation-timing-function是作用于关键帧周期的, 下面的从50%为一个关键帧周期(两个时间为一个关键帧周期)*/
+            /*而@keyframes是作用于整个动画周期的*/
+            0% {
+                transform: translateY(-100px);
+            }
+            50%{
+                transform: translateY(-50px);
+            }
+            100% {
+                transform: translateY(100px);
+            }
+
+        }
+
+
+    </style>
+</head>
+<body>
+<div id="wrap">
+    <div id="test">jacklu</div>
+</div>
+</body>
+</html>

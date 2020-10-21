@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>绑定</title>
+    <script src="../lib/vue.js"></script>
+    <style>
+        .aClass{
+            color: red;
+        }
+        .bClass{
+            color: blue;
+        }
+        .cClass{
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+<div id="demo">
+    <h2>1. class绑定:  :class='xxx'</h2>
+    <p class="cClass" :class="a">xxx是字符串</p>
+    <!--当class绑定的是对象, 键是唯一的, 是常量, 因此键不是vm对象里面的属性-->
+    <p :class="{aClass: isA, bClass: isB}">xxx是对象</p>
+    <!--当class绑定的是数组的时候, 加双引号的表示常量, 没加双引号的表示变量-->
+    <p :class="[a]">xxx是数组</p>
+
+
+
+    <h2>2. style绑定</h2>
+    <p :style="{color:activeColor, fontSize:fontSize + 'px'}">:style="{color:activeColor, fontSize:fontSize + 'px'}"</p>
+    <button @click="update">更新</button>
+</div>
+<script>
+    var vm = new Vue({
+        el: '#demo',
+        data:{
+            a: 'aClass',
+            isA: true,
+            isB: false,
+            activColor: 'red',
+            fontSize: 20,
+        },
+        methods:{
+            update(){
+                this.a = 'bClass';
+                this.isA =  !this.isA;
+                this.isB = !this.isB;
+                this.activeColor = 'green';
+                this.fontSize = 30;
+            }
+        }
+
+    })
+</script>
+</body>
+</html>
